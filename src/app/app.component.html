@@ -4,20 +4,46 @@
     <p></p>
     <form>
         <label for="gsalary">Vložte hrubou mzdu:</label><br>
-        <input type="number" id="gsalary" name="buttonSalary" [(ngModel)]="netWorth">
-            <button type="button" (click)="calcNetWorth()" >Vypočítej!</button><br>
+        <input type="number" id="gsalary" name="buttonSalary" [(ngModel)]="input">
+            <button type="button" (click)="calcNetWorth()" (click)="calcHealthInsurance()" (click)="calcSociaInsurance()" (click)="calcIncomeTax()">Vypočítej!</button><br>
+
         <div class="row">
             <div class="column" style="background-color: aquamarine;" id="showResultHere">Čistá mzda
                 <div>
                     {{netWorth}}
                 </div>
             </div>
-            <div class="column" style="background-color: aquamarine;">Další funkce
+        </div>
+
+        <p>Srážky z hrubé mzdy:</p>
+        <div class="row">
+            <div class="column" style="background-color: burlywood;" id="showResultHere">Zdravotní pojištění (4,5%)
                 <div>
-                    {{netWorth}}
+                    {{HealthInsurance}}
                 </div>
             </div>
-          </div>
+        </div>
+        <div class="row">
+            <div class="column" style="background-color: burlywood;" id="showResultHere">Sociální pojištění (7,1%)
+                <div>
+                    {{SocialInsurance}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" style="background-color: burlywood;" id="showResultHere">Daň ze mzdy (15%)
+                <div>
+                    {{IncomeTax}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" style="background-color: burlywood;" id="showResultHere">Sleva na daňového poplatníka
+                <div>
+                    2570
+                </div>
+            </div>
+        </div>
       </form>
 </div>
     
