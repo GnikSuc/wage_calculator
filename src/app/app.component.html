@@ -22,12 +22,19 @@
 <body> 
     <p style="font-size:large;">Výpočet čisté mzdy a odvodů:</p><br>
     <form>
-        <label for="numsalary">Vložte hrubou mzdu:</label><br>
+        <label for="numsalary">Hrubá mzda:</label><br>
         <input type="number" id="numsalary" name="buttonSalary" [(ngModel)]="inputWage"><br>
-        <label for="numkids">Zadejte počet dětí:</label><br>
-        <input type="number" id="numkids" name="buttonKids" [(ngModel)]="inputKids"><br>
-        <!-- <label for="numinvalidity">Zadejte počet dětí:</label><br>
-        <input type="number" id="numinvalidity" name="buttonInvalidity" [(ngModel)]="input2"><br> -->
+        <label for="numkids">Počet dětí:</label><br>
+        <input type="number" id="numkids" name="buttonKids" [(ngModel)]="inputNumKids"><br>
+        <label for="numhandykids">Počet dětí ZTP/P:</label><br>
+        <input type="number" id="numhandykids" name="buttonhandyKids" [(ngModel)]="inputNumKidsHandy"><br>
+        <label for="disability">Invalidita:</label><br>
+        <select name="disability" id="disability">
+            <option value="None">Žádná</option>
+            <option value="None">Částečná invalidita (I. a II. stupeň)</option>
+            <option value="None">Plná invalidita (III. stupeň)</option>
+            <option value="None">Držitel ZTP/P</option>
+        </select><br>
         <button type="button" (click)="onClick()">Vypočítej!</button><br>
         <!-- <button type="button" (click)="calcNetWorth()" (click)="calcHealthInsurance()" (click)="calcSociaInsurance()" (click)="calcIncomeTax()" (click)="calcTaxDiscount()" (click)="errorCatchPhase()">Vypočítej!</button><br> -->
     </form>
@@ -58,7 +65,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="column" id="showResultHere">Daň ze mzdy (15%)
+            <div class="column" id="showResultHere">Daň ze mzdy {{IncomeTaxPhrase}}
                 <div class="row" style="float: right">
                     {{IncomeTax}}
                 </div>
@@ -68,6 +75,13 @@
             <div class="column" id="showResultHere">Sleva na daňového poplatníka
                 <div class="row" style="float: right">
                     {{TaxDiscount}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" id="showResultHere">Slevy na děti
+                <div class="row" style="float: right">
+                    {{TotalTaxDiscountKids}}
                 </div>
             </div>
         </div>
