@@ -1,7 +1,11 @@
-.row {
-    display: flex;
-  }
-  
-  .column {
-    flex: 50%;
-  }
+// SCSS SYNTAX
+$font-stack: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+$primary-color: #1f0c3e;
+
+body {
+    border-radius: 30px solid;
+    font: 100% $font-stack;
+    font-stretch: expanded;
+    color: $primary-color;
+    background-color: beige;
+}

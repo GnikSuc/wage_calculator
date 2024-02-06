@@ -1,49 +1,77 @@
-<div>
-    
-    <p>Zadejte svou hrubou mzdu pro výpočet čisté mzdy:</p>
-    <p></p>
+<style>
+    /* .input[type=number] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; */
+
+    .column {
+        float: left;
+        width: 24%;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: left;
+    }
+</style>
+<body> 
+    <p style="font-size:large;">Výpočet čisté mzdy a odvodů:</p><br>
     <form>
-        <label for="gsalary">Vložte hrubou mzdu:</label><br>
-        <input type="number" id="gsalary" name="buttonSalary" [(ngModel)]="input">
-            <button type="button" (click)="calcNetWorth()" (click)="calcHealthInsurance()" (click)="calcSociaInsurance()" (click)="calcIncomeTax()">Vypočítej!</button><br>
+        <label for="numsalary">Vložte hrubou mzdu:</label><br>
+        <input type="number" id="numsalary" name="buttonSalary" [(ngModel)]="inputWage"><br>
+        <label for="numkids">Zadejte počet dětí:</label><br>
+        <input type="number" id="numkids" name="buttonKids" [(ngModel)]="inputKids"><br>
+        <!-- <label for="numinvalidity">Zadejte počet dětí:</label><br>
+        <input type="number" id="numinvalidity" name="buttonInvalidity" [(ngModel)]="input2"><br> -->
+        <button type="button" (click)="onClick()">Vypočítej!</button><br>
+        <!-- <button type="button" (click)="calcNetWorth()" (click)="calcHealthInsurance()" (click)="calcSociaInsurance()" (click)="calcIncomeTax()" (click)="calcTaxDiscount()" (click)="errorCatchPhase()">Vypočítej!</button><br> -->
+    </form>
+</body>
 
-        <div class="row">
-            <div class="column" style="background-color: aquamarine;" id="showResultHere">Čistá mzda
-                <div>
-                    {{netWorth}}
-                </div>
-            </div>
-        </div>
+<body>
+    <p style="font-size:large">Výpočet čisté mzdy:</p>
+    <p style="font-size: medium;">{{netWorth}}</p>
+    <!-- <b style="font-size: medium;" style="color: red;">{{ErrorCatchPhase}}</b> -->
+</body>
 
-        <p>Srážky z hrubé mzdy:</p>
+<body>
+    <form>
+        <body style="background-color: burlywood;">
+        <p style="font-size: larger;">Odvody a tok pěněz:</p>
         <div class="row">
-            <div class="column" style="background-color: burlywood;" id="showResultHere">Zdravotní pojištění (4,5%)
-                <div>
+            <div class="column" id="showResultHere">Zdravotní pojištění (4,5%)
+                <div class="row" style="float: right">
                     {{HealthInsurance}}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="column" style="background-color: burlywood;" id="showResultHere">Sociální pojištění (7,1%)
-                <div>
+            <div class="column" id="showResultHere">Sociální pojištění (7,1%)
+                <div class="row" style="float: right">
                     {{SocialInsurance}}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="column" style="background-color: burlywood;" id="showResultHere">Daň ze mzdy (15%)
-                <div>
+            <div class="column" id="showResultHere">Daň ze mzdy (15%)
+                <div class="row" style="float: right">
                     {{IncomeTax}}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="column" style="background-color: burlywood;" id="showResultHere">Sleva na daňového poplatníka
-                <div>
-                    2570
+            <div class="column" id="showResultHere">Sleva na daňového poplatníka
+                <div class="row" style="float: right">
+                    {{TaxDiscount}}
                 </div>
             </div>
         </div>
+        </body>
       </form>
-</div>
-    
+</body>
+
