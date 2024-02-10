@@ -1,91 +1,80 @@
-<style>
-    /* .input[type=number] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box; */
+<!DOCTYPE html>
 
-    .column {
-        float: left;
-        width: 24%;
-    }
-
-    .row:after {
-        content: "";
-        display: table;
-        clear: left;
-    }
-</style>
-<body> 
-    <p style="font-size:large;">Výpočet čisté mzdy a odvodů:</p><br>
-    <form>
+<h1>Výpočet čisté mzdy a odvodů:</h1>
+<body class="standard"> 
+    <form><br>
         <label for="numsalary">Hrubá mzda:</label><br>
-        <input type="number" id="numsalary" name="buttonSalary" [(ngModel)]="inputWage"><br>
+        <input type="number" id="numsalary" onfocus="this.value=''" name="buttonSalary" [(ngModel)]="inputWage"><br>
         <label for="numkids">Počet dětí:</label><br>
-        <input type="number" id="numkids" name="buttonKids" [(ngModel)]="inputNumKids"><br>
+        <input type="number" id="numkids" onfocus="this.value=''" name="buttonKids" [(ngModel)]="inputNumKids"><br>
         <label for="numhandykids">Počet dětí ZTP/P:</label><br>
-        <input type="number" id="numhandykids" name="buttonhandyKids" [(ngModel)]="inputNumKidsHandy"><br>
+        <input type="number" id="numhandykids" onfocus="this.value=''" name="buttonhandyKids" [(ngModel)]="inputNumKidsHandy"><br>
         <label for="disability">Invalidita:</label><br>
-        <select name="disability" id="disability">
-            <option value="None">Žádná</option>
-            <option value="None">Částečná invalidita (I. a II. stupeň)</option>
-            <option value="None">Plná invalidita (III. stupeň)</option>
-            <option value="None">Držitel ZTP/P</option>
-        </select><br>
-        <button type="button" (click)="onClick()">Vypočítej!</button><br>
-        <!-- <button type="button" (click)="calcNetWorth()" (click)="calcHealthInsurance()" (click)="calcSociaInsurance()" (click)="calcIncomeTax()" (click)="calcTaxDiscount()" (click)="errorCatchPhase()">Vypočítej!</button><br> -->
+        <select [(ngModel)]="eventDisabled" name="selectedDisability" (ngModelChange)="onSelectDisability($event)">
+            <option *ngFor="let disability of disabilities" [value]="disability.value">
+              {{ disability.name }}
+            </option>
+          </select><br><br>
+        <!-- <select [(ngModel)]="selectedDisability" name="selectedDisability" (ngModelChange)="onSelectDisability($event)">
+            <option id="0">Žádná</option>
+            <option id="1">Částečná invalidita</option>
+            <option id="2">Plná invalidita</option>
+            <option id="3">Držitel ZTP/P</option>
+        </select><br> -->
+        <button type="button" class="pointer" (click)="onClick()">Vypočítej!</button><br><br>
     </form>
 </body>
 
-<body>
-    <p style="font-size:large">Výpočet čisté mzdy:</p>
-    <p style="font-size: medium;">{{netWorth}}</p>
-    <!-- <b style="font-size: medium;" style="color: red;">{{ErrorCatchPhase}}</b> -->
+<body class="standard">
+    <h2>Výpočet čisté mzdy:</h2>
+    <h3>{{netWorth}}</h3>
 </body>
 
-<body>
+<body class="review">
     <form>
-        <body style="background-color: burlywood;">
-        <p style="font-size: larger;">Odvody a tok pěněz:</p>
-        <div class="row">
+        <h2>Odvody a tok pěněz:</h2>
+        <div class="data">
             <div class="column" id="showResultHere">Zdravotní pojištění (4,5%)
                 <div class="row" style="float: right">
                     {{HealthInsurance}}
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="data">
             <div class="column" id="showResultHere">Sociální pojištění (7,1%)
                 <div class="row" style="float: right">
                     {{SocialInsurance}}
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="data">
+            <div class="column" id="showResultHere">Nemocenské pojištění (0,6%)
+                <div class="row" style="float: right">
+                    {{InjuryInsurance}}
+                </div>
+            </div>
+        </div>
+        <div class="data">
             <div class="column" id="showResultHere">Daň ze mzdy {{IncomeTaxPhrase}}
                 <div class="row" style="float: right">
                     {{IncomeTax}}
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="data">
             <div class="column" id="showResultHere">Sleva na daňového poplatníka
                 <div class="row" style="float: right">
                     {{TaxDiscount}}
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="data">
             <div class="column" id="showResultHere">Slevy na děti
                 <div class="row" style="float: right">
                     {{TotalTaxDiscountKids}}
                 </div>
             </div>
-        </div>
-        </body>
+        </div><br>
       </form>
 </body>
 
