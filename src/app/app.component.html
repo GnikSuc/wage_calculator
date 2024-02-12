@@ -11,7 +11,7 @@
         <input type="number" id="numhandykids" onfocus="this.value=''" name="buttonhandyKids" [(ngModel)]="inputNumKidsHandy"><br>
         <label for="disability">Invalidita:</label><br>
         <select [(ngModel)]="eventDisabled" name="selectedDisability" (ngModelChange)="onSelectDisability($event)">
-            <option *ngFor="let disability of disabilities" [value]="disability.value">
+            <option class="dropdown" *ngFor="let disability of disabilities" [value]="disability.value">
               {{ disability.name }}
             </option>
           </select><br><br>
@@ -27,54 +27,81 @@
 
 <body class="standard">
     <h2>Výpočet čisté mzdy:</h2>
-    <h3>{{netWorth}}</h3>
+    <h3>{{NetWorth_F}}</h3>
+    <h3 class="ErrorCatchPhrase">{{ErrorCatchPhrase}}</h3>
 </body>
 
 <body class="review">
     <form>
-        <h2>Odvody a tok pěněz:</h2>
+        <h2>Odvody a tok pěněz zaměstnance:</h2>
         <div class="data">
-            <div class="column" id="showResultHere">Zdravotní pojištění (4,5%)
+            <div class="column" id="showResultHere">Sociální pojištění (6,5%)
                 <div class="row" style="float: right">
-                    {{HealthInsurance}}
+                    {{SocialInsurance_F}}
                 </div>
             </div>
         </div>
         <div class="data">
-            <div class="column" id="showResultHere">Sociální pojištění (7,1%)
+            <div class="column" id="showResultHere">Zdravotní pojištění (4,5%)
                 <div class="row" style="float: right">
-                    {{SocialInsurance}}
+                    {{HealthInsurance_F}}
                 </div>
             </div>
         </div>
         <div class="data">
             <div class="column" id="showResultHere">Nemocenské pojištění (0,6%)
                 <div class="row" style="float: right">
-                    {{InjuryInsurance}}
+                    {{InjuryInsurance_F}}
                 </div>
             </div>
         </div>
         <div class="data">
             <div class="column" id="showResultHere">Daň ze mzdy {{IncomeTaxPhrase}}
                 <div class="row" style="float: right">
-                    {{IncomeTax}}
+                    {{IncomeTax_F}}
                 </div>
             </div>
         </div>
         <div class="data">
             <div class="column" id="showResultHere">Sleva na daňového poplatníka
                 <div class="row" style="float: right">
-                    {{TaxDiscount}}
+                    {{TaxDiscount_F}}
                 </div>
             </div>
         </div>
         <div class="data">
-            <div class="column" id="showResultHere">Slevy na děti
+            <div class="column" id="showResultHere">Slevy na děti ({{inputNumKids}})
                 <div class="row" style="float: right">
-                    {{TotalTaxDiscountKids}}
+                    {{TotalTaxDiscountKids_F}}
                 </div>
             </div>
         </div><br>
       </form>
 </body>
 
+<body class="review">
+    <form>
+        <h2>Zaměstnavatel platí za zaměstnance:</h2>
+        <div class="data">
+            <div class="column" id="showResultHere">Sociální pojištění (24,8%)
+                <div class="row" style="float: right">
+                    {{SocialInsuranceEmployer_F}}
+                </div>
+            </div>
+        </div>
+        <div class="data">
+            <div class="column" id="showResultHere">Zdravotní pojištění (9%)
+                <div class="row" style="float: right">
+                    {{HealthInsuranceEmployer_F}}
+                </div>
+            </div>
+        </div>
+        <div class="data">
+            <div class="column" id="showResultHere">Celkové náklady na zaměstnance:
+                <div class="row" style="float: right">
+                    {{TotalEmployerExpense_F}}
+                </div>
+            </div>
+        </div><br>
+      </form>
+</body>

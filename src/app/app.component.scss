@@ -32,6 +32,15 @@ h3 {
     text-align: center;
 }
 
+h3.ErrorCatchPhrase {
+    font-size: 20px;
+    line-height: normal;
+    color: red;
+    text-shadow: 0 0 6px rgb(253, 255, 209);
+    text-align: center;
+    border: black;
+}
+
 
 body.standard {
     margin: auto;
@@ -67,6 +76,12 @@ select {
     border-radius: 6px;
     box-sizing: border-box;
 }
+// dropdown-content
+ 
+option{
+    text-align: right;
+    padding-right: 5%;
+  }
 
 button {
     background-color: #3f8716; /* Green */
