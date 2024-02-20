@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
-import { throwError } from 'rxjs';
 import { __values } from 'tslib';
 
 interface Disability {

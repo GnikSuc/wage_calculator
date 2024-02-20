@@ -60,7 +60,7 @@ input {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 3px solid #3f8716;
     border-radius: 6px;
     box-sizing: border-box;
 }
@@ -72,7 +72,7 @@ select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 3px solid #3f8716;
     border-radius: 6px;
     box-sizing: border-box;
 }
@@ -103,8 +103,9 @@ label {
     line-height: 0px;
     font-weight: bold;
     color: #3f8716;
-    border: black;
     text-align: left;
+    position: relative;
+    top: 8px;
 }
 
 body.review {
